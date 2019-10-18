@@ -13,6 +13,7 @@ export class UploadGradesComponent implements OnInit {
   error: string;
   userId: number = 1;
   uploadResponse = { status: '', message: '', filePath: '' };
+  grades: string;
 
   constructor(private formBuilder: FormBuilder, private uploadService: UploadService) { }
 
@@ -37,6 +38,10 @@ export class UploadGradesComponent implements OnInit {
       (res) => this.uploadResponse = res,
       (err) => this.error = err
     );
+  }
+
+  submitGrades() {
+    console.log('grades', this.grades);
   }
 
 }
