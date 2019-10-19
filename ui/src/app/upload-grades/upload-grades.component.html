@@ -33,7 +33,7 @@
 
       </div>
 
-      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" style="margin-bottom: 25px;">
 
         <input type="file" name="avatar" accept=".txt" (change)="onFileChange($event)" />
         <button type="submit">Upload</button>
