@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../api.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-grades-list',
-  templateUrl: './grades-list.component.html',
-  styleUrls: ['./grades-list.component.less']
+  templateUrl: './students-list.component.html',
+  styleUrls: ['./students-list.component.less']
 })
-export class GradesListComponent implements OnInit {
+export class StudentsListComponent implements OnInit {
 
   public rows:Array<any> = [];
   public columns:Array<any> = [
@@ -28,7 +29,7 @@ export class GradesListComponent implements OnInit {
 
   private data:Array<any>;
 
-  public constructor(private apiService: ApiService) {
+  public constructor(private apiService: ApiService, private router: Router) {
     this.apiService.getStudents().subscribe((response) => {
       this.data = response.data;
 
@@ -129,7 +130,7 @@ export class GradesListComponent implements OnInit {
   }
 
   public onCellClick(data: any): any {
-    console.log(data);
+    this.router.navigate([`students/${data.row.studentId}/grades`]);
   }
 
 }

@@ -9,18 +9,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UploadGradesComponent } from './upload-grades/upload-grades.component';
-import { GradesListComponent } from './grades-list/grades-list.component';
+import { StudentsListComponent } from './students-list/students-list.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PaginationModule } from "ngx-bootstrap";
+import { StudentGradeComponent } from './students-list/student-grade/student-grade.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadGradesComponent,
-    GradesListComponent,
+    StudentsListComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    StudentGradeComponent
   ],
   imports: [
     BrowserModule,

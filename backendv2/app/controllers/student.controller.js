@@ -108,9 +108,14 @@ exports.getStudents = (req, res) => {
 };
 
 exports.studentGrade = (req, res) => {
-	Student.find({ studentId: req.body.studentId }).then(response => {
-		res.status(200).send("successful");
+	Student.findOne({ studentId: req.body.studentId }).then(response => {
+		res.status(200).send({
+			status: true,
+			homework: response.homeworks,
+			test: response.tests,
+			average: response.averages
+		});
 	}).catch(err => {
-		console.error('error', err);
+		res.status(500).send('An error has occurred', err);
 	});
 };
