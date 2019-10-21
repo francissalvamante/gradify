@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -10,14 +10,14 @@ import { ApiService } from '../api.service';
 export class UploadGradesComponent implements OnInit {
   grades: String;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {}
 
   uploadGrades() {
     let data = this.grades.split('\n');
     this.apiService.uploadGrades(data).subscribe(data => {
-      console.log('data', data);
+      this.router.navigate(['grades']);
     });
   }
 

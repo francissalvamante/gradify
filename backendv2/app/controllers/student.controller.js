@@ -86,13 +86,14 @@ exports.grades = async (req, res) => {
 };
 
 exports.getStudents = (req, res) => {
-	Student.find().then(response => {
+	Student.find().sort({ firstName: 'asc', lastName: 'asc' }).then(response => {
 		let data = [];
 		for(var i = 0; i < response.length; i++) {
 			let student = {
 				studentId: response[i].studentId,
 				firstName: response[i].firstName,
-				lastName: response[i].lastName
+				lastName: response[i].lastName,
+                createdAt: response[i].createdAt
 			};
 
 			data.push(student);

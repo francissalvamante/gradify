@@ -12,4 +12,8 @@ export class ApiService {
   public uploadGrades(data: any[]) {
   	return this.httpClient.post(`${this.apiUrl}/grades`, { content: data });
   }
+
+  public getStudents() {
+    return this.httpClient.get(`${this.apiUrl}/students`);
+  }
 }
