@@ -30,16 +30,18 @@ StudentSchema.virtual('tests', {
 	justOne: false
 });
 
+StudentSchema.index({ studentId: -1 }, { unique: true });
+
 StudentSchema.pre('find', function() {
 	this.populate('homeworks');
 	this.populate('averages');
 	this.populate('tests');
-})
+});
 
 StudentSchema.pre('findOne', function() {
 	this.populate('homeworks');
 	this.populate('averages');
 	this.populate('tests');
-})
+});
 
 module.exports = mongoose.model('Student', StudentSchema);

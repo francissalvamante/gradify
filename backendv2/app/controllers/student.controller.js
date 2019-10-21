@@ -4,11 +4,14 @@ const Homework = require('../models/homework.model.js');
 const Test = require('../models/test.model.js');
 const Average = require('../models/average.model.js');
 
-exports.grades = (req, res) => {
-	console.log('req', req);
+var Promise = require('bluebird');
+Promise.promisifyAll(Student);
+
+exports.grades = async (req, res) => {
 	let body = req.body.content;
 	let quarter = body[0].split(',')[0];
 	let year = body[0].split(',')[1];
+	let data = [];
 
 	for(var i = 1; i < body.length; i++) {
 		let details = body[i].split(' ');
@@ -25,8 +28,8 @@ exports.grades = (req, res) => {
 			lastName: lastName
 		});
 
-		student.save().then((response) => {
-			console.log('response', response);
+		await student.save().then((response) => {
+			data.push(response);
 			for(var j = 2; j < details.length; j++) {
 				if(details[j] === 'H') {
 					homework = true;
@@ -59,7 +62,7 @@ exports.grades = (req, res) => {
 				}
 			}
 
-			totalH -= minH;;
+			totalH -= minH;
 			let aveH = totalH / (countH - 1);
 			let aveT = totalT / countT;
 
@@ -70,21 +73,33 @@ exports.grades = (req, res) => {
 				year: year,
 				studentId: response.studentId
 			}).save();
-
-			res.status(200).send('Successful');
 		}).catch(err => {
 			console.error('err', err);
 			res.status(500).send('An error has occured');
 		});
 	}
+
+	res.status(200).send({
+		status: true,
+		data: data
+	});
 };
 
 exports.getStudents = (req, res) => {
 	Student.find().then(response => {
-		console.log('hello there');
+		let data = [];
+		for(var i = 0; i < response.length; i++) {
+			let student = {
+				studentId: response[i].studentId,
+				firstName: response[i].firstName,
+				lastName: response[i].lastName
+			};
+
+			data.push(student);
+		}
 		res.status(200).send({
 			status: true,
-			data: response
+			data: data
 		});
 	}).catch(err => {
 		console.error('error', err);
@@ -93,9 +108,8 @@ exports.getStudents = (req, res) => {
 
 exports.studentGrade = (req, res) => {
 	Student.find({ studentId: req.body.studentId }).then(response => {
-		console.log('response', response);
 		res.status(200).send("successful");
 	}).catch(err => {
 		console.error('error', err);
 	});
-}
+};

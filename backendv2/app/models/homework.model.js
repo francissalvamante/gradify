@@ -12,4 +12,6 @@ const HomeworkSchema = mongoose.Schema({
 	timestamps: true
 });
 
+HomeworkSchema.index({ studentId: -1 });
+
 module.exports = mongoose.model('Homework', HomeworkSchema);

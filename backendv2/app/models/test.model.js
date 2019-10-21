@@ -12,4 +12,6 @@ const TestSchema = mongoose.Schema({
 	timestamps: true
 });
 
+TestSchema.index({ studentId: -1 });
+
 module.exports = mongoose.model('Test', TestSchema);

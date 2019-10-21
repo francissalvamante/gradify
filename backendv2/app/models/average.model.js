@@ -12,4 +12,6 @@ const AverageSchema = mongoose.Schema({
 	timestamps: true
 });
 
+AverageSchema.index({ studentId: -1 });
+
 module.exports = mongoose.model('Average', AverageSchema);
