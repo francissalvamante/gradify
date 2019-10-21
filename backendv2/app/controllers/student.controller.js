@@ -5,6 +5,7 @@ const Test = require('../models/test.model.js');
 const Average = require('../models/average.model.js');
 
 exports.grades = (req, res) => {
+	console.log('req', req);
 	let body = req.body.content;
 	let quarter = body[0].split(',')[0];
 	let year = body[0].split(',')[1];
@@ -78,12 +79,23 @@ exports.grades = (req, res) => {
 	}
 };
 
-exports.getGrades = (req, res) => {
+exports.getStudents = (req, res) => {
 	Student.find().then(response => {
-		console.log('response', response);
+		console.log('hello there');
+		res.status(200).send({
+			status: true,
+			data: response
+		});
 	}).catch(err => {
 		console.error('error', err);
 	});
-
-	res.status(200).send('Successful');
 };
+
+exports.studentGrade = (req, res) => {
+	Student.find({ studentId: req.body.studentId }).then(response => {
+		console.log('response', response);
+		res.status(200).send("successful");
+	}).catch(err => {
+		console.error('error', err);
+	});
+}

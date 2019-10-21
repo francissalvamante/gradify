@@ -3,5 +3,7 @@ module.exports = (app) => {
 
 	app.post('/grades', students.grades);
 
-	app.get('/grades', students.getGrades);
+	app.get('/students', students.getStudents);
+
+	app.get('/studentgrade', students.studentGrade);
 }

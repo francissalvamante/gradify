@@ -27,8 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
