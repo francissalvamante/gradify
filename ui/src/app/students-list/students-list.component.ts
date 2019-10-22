@@ -2,6 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from "../api.service";
 import { Router } from "@angular/router";
 
+export interface Student {
+  studentId: string,
+  firstName: string,
+  lastName: string,
+  dateCreated?: string
+}
+
+interface GetStudentResponse {
+  status: Boolean;
+  data: Array<Student>
+}
+
 @Component({
   selector: 'app-grades-list',
   templateUrl: './students-list.component.html',
@@ -11,8 +23,8 @@ export class StudentsListComponent implements OnInit {
 
   public rows:Array<any> = [];
   public columns:Array<any> = [
-    {title: 'First Name', name: 'firstName', filtering: {filterString: '', placeholder: 'Filter by First Name'}},
-    {title: 'Last Name', name: 'lastName', filtering: {filterString: '', placeholder: 'Filter by Last Name'}}
+    {title: 'First Name', name: 'firstName'},
+    {title: 'Last Name', name: 'lastName'}
   ];
   public page:number = 1;
   public itemsPerPage:number = 10;
@@ -30,7 +42,7 @@ export class StudentsListComponent implements OnInit {
   private data:Array<any>;
 
   public constructor(private apiService: ApiService, private router: Router) {
-    this.apiService.getStudents().subscribe((response) => {
+    this.apiService.getStudents().subscribe((response: GetStudentResponse) => {
       this.data = response.data;
 
       this.length = this.data.length;

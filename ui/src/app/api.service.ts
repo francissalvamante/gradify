@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,10 @@ export class ApiService {
 
   public getStudents() {
     return this.httpClient.get(`${this.apiUrl}/students`);
+  }
+
+  public getStudentGrade(id: string) {
+    const params = new HttpParams().set('studentId', id);
+    return this.httpClient.get(`${this.apiUrl}/studentgrade`, { params: params });
   }
 }

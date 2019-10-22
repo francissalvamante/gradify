@@ -1,6 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { ApiService } from "../../api.service";
+import {Student} from "../students-list.component";
+import {NgbTabChangeEvent} from "@ng-bootstrap/ng-bootstrap";
+
+interface Homework {
+  grade: number;
+  quarter: string;
+  year: string;
+  studentId: string;
+}
+
+interface Test {
+  grade: number;
+  quarter: string;
+  year: string;
+  studentId: string;
+}
+
+interface Average {
+  average: number;
+  quarter: string;
+  year: string;
+  studentId: string;
+}
+
+interface StudentGradeResponse {
+  status: boolean;
+  data: Student;
+  homework: Homework[],
+  test: Test[],
+  average: Average[]
+}
 
 @Component({
   selector: 'app-student-grade',
@@ -9,10 +40,24 @@ import { ApiService } from "../../api.service";
 })
 export class StudentGradeComponent implements OnInit {
   id: string;
+  name: string;
   public rows:Array<any> = [];
   public columns:Array<any> = [
-    {title: 'First Name', name: 'firstName'},
-    {title: 'Last Name', name: 'lastName'}
+    {title: 'Quarter', name: 'quarter', sort: 'desc'},
+    {title: 'Year', name: 'year', sort: 'desc'},
+    {title: 'Average', name: 'average'}
+  ];
+  public homeworkRows:Array<any> = [];
+  public homeworkColumns:Array<any> = [
+    {title: 'Quarter', name: 'quarter', sort: 'desc'},
+    {title: 'Year', name: 'year', sort: 'desc'},
+    {title: 'Grade', name: 'grade'}
+  ];
+  public testRows:Array<any> = [];
+  public testColumns:Array<any> = [
+    {title: 'Quarter', name: 'quarter', sort: 'desc'},
+    {title: 'Year', name: 'year', sort: 'desc'},
+    {title: 'Grade', name: 'grade'}
   ];
   public page:number = 1;
   public itemsPerPage:number = 10;
@@ -22,17 +67,48 @@ export class StudentGradeComponent implements OnInit {
 
   public config:any = {
     paging: true,
+    sorting: {columns: this.homeworkColumns},
+    filtering: {filterString: ''},
+    className: ['table-striped', 'table-bordered']
+  };
+
+  public configHomework:any = {
+    paging: true,
+    sorting: {columns: this.testColumns},
+    filtering: {filterString: ''},
+    className: ['table-striped', 'table-bordered']
+  };
+
+  public configTest:any = {
+    paging: true,
     sorting: {columns: this.columns},
     filtering: {filterString: ''},
     className: ['table-striped', 'table-bordered']
   };
 
   private data:Array<any>;
+  private dataHomework:Array<any>;
+  private dataTest:Array<any>;
 
-  constructor(private route: ActivatedRoute, private apiService: ApiService) { }
-
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {
     this.id = this.route.snapshot.paramMap.get('id');
+
+    this.apiService.getStudentGrade(this.id).subscribe((response: StudentGradeResponse) => {
+      this.name = response.data.firstName + ' ' + response.data.lastName;
+      this.data = response.average;
+      this.dataHomework = response.homework;
+      this.dataTest = response.test;
+
+      this.onChangeTable(this.config);
+      this.onChangeTable(this.configHomework);
+      this.onChangeTable(this.configTest);
+    });
+  }
+
+  ngOnInit() {}
+
+  public onTabChange($event: NgbTabChangeEvent) {
+    console.log('$event', $event);
   }
 
   public changePage(page:any, data:Array<any> = this.data):Array<any> {
