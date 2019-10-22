@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "weather-3e666": {
+      "hosting": {
+        "ui": [
+          "weather-3e666"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "staging": "weather-3e666"
+  }
+}
