@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9273f6bf-ae38-4837-8039-adc39b0c1bbf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/app/students-list/student-grade/student-grade.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/app/students-list/student-grade/student-grade.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backendv2/app/controllers/student.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/backendv2/app/controllers/student.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backendv2/app/routes/student.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/backendv2/app/routes/student.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/app/api.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/app/api.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/app/students-list/student-grade/grade-update/grade-update.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/app/students-list/student-grade/grade-update/grade-update.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/app/students-list/student-grade/student-grade.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/app/students-list/student-grade/student-grade.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,7 +82,7 @@
       <workItem from="1571624196262" duration="10469000" />
       <workItem from="1571638492251" duration="12843000" />
       <workItem from="1571712116912" duration="8003000" />
-      <workItem from="1571726974831" duration="9676000" />
+      <workItem from="1571726974831" duration="10571000" />
     </task>
     <task id="LOCAL-00001" summary="master - added textarea for inputting grades">
       <created>1571381626271</created>
@@ -131,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571729744227</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="master - started fix for updating grades">
+      <created>1571743069399</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1571743069399</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,6 +172,7 @@
     <MESSAGE value="master - finished showing students" />
     <MESSAGE value="master - finished" />
     <MESSAGE value="master - fixed the student grade page" />
-    <option name="LAST_COMMIT_MESSAGE" value="master - fixed the student grade page" />
+    <MESSAGE value="master - started fix for updating grades" />
+    <option name="LAST_COMMIT_MESSAGE" value="master - started fix for updating grades" />
   </component>
 </project>

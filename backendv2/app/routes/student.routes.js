@@ -6,4 +6,6 @@ module.exports = (app) => {
 	app.get('/students', students.getStudents);
 
 	app.get('/studentgrade', students.studentGrade);
+
+	app.put('/update', students.updateGrade);
 }

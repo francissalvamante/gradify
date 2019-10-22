@@ -11,6 +11,7 @@ export class GradeUpdateComponent implements OnInit {
   @Input() grade: number;
   @Input() studentId: string;
   @Input() currentTab: string;
+  @Input() _id: string;
   oldGrade: number;
 
   constructor(public activeModal: NgbActiveModal, private apiService: ApiService) { }
@@ -21,7 +22,9 @@ export class GradeUpdateComponent implements OnInit {
 
   public updateGrade(): void {
     if(this.currentTab === 'homework')
-      console.log('homework');
+      this.apiService.updateGrade(this.grade, this.studentId, this.currentTab, this._id).subscribe((response) => {
+        console.log('response', response)
+      });
     else if(this.currentTab === 'test')
       console.log('test');
     this.activeModal.close('Close click');

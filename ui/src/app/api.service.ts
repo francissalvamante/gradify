@@ -21,4 +21,13 @@ export class ApiService {
     const params = new HttpParams().set('studentId', id);
     return this.httpClient.get(`${this.apiUrl}/studentgrade`, { params: params });
   }
+
+  public updateGrade(grade: number, studentId: string, currentTab: string, _id: string) {
+    return this.httpClient.put(`${this.apiUrl}/update`, {
+      _id: _id,
+      grade: grade,
+      studentId: studentId,
+      type: currentTab
+    });
+  }
 }

@@ -125,3 +125,7 @@ exports.studentGrade = (req, res) => {
 		res.status(500).send(`An error has occurred ${err}`);
 	});
 };
+
+exports.updateGrade = (req, res) => {
+    Student.findOneAndUpdate({ _id: req.body._id })
+}

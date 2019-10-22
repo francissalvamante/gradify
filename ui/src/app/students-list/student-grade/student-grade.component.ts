@@ -208,10 +208,10 @@ export class StudentGradeComponent implements OnInit {
   }
 
   public onCellClick(data: any): any {
-    console.log('data', data);
     const modalRef = this.modalService.open(GradeUpdateComponent);
     modalRef.componentInstance.grade = data.row.grade;
     modalRef.componentInstance.studentId = data.row.studentId;
     modalRef.componentInstance.currentTab = this.currentTab;
+    modalRef.componentInstance._id = data.row._id;
   }
 }
