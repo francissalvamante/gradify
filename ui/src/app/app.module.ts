@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PaginationModule } from "ngx-bootstrap";
 import { StudentGradeComponent } from './students-list/student-grade/student-grade.component';
+import { GradeUpdateComponent } from './students-list/student-grade/grade-update/grade-update.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { StudentGradeComponent } from './students-list/student-grade/student-gra
     StudentsListComponent,
     HomeComponent,
     ProfileComponent,
-    StudentGradeComponent
+    StudentGradeComponent,
+    GradeUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,9 @@ import { StudentGradeComponent } from './students-list/student-grade/student-gra
     FormsModule,
     Ng2TableModule,
     PaginationModule.forRoot()
+  ],
+  entryComponents: [
+    GradeUpdateComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

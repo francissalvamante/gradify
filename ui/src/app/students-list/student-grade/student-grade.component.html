@@ -3,17 +3,32 @@
     <p class="lead">{{name || 'Student'}} Grades</p>
   </div>
 
-  <!--  <div class="row">-->
-  <!--    <div class="col-md-4">-->
-  <!--      <input *ngIf="config.filtering" placeholder="Filter all columns"-->
-  <!--        [ngTableFiltering]="config.filtering"-->
-  <!--        class="form-control"-->
-  <!--        (tableChanged)="onChangeTable(config)">-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--  <br>-->
   <ngb-tabset (tabChange)="onTabChange($event)">
     <ngb-tab title="Average" id="average">
+      <ng-template ngbTabContent>
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <ng-table [config]="config"
+                      (tableChanged)="onChangeTable(config)"
+                      [rows]="rows" [columns]="columns"></ng-table>
+            <pagination *ngIf="config.paging"
+                        class="pagination-sm"
+                        [(ngModel)]="page"
+                        [totalItems]="length"
+                        [itemsPerPage]="itemsPerPage"
+                        [maxSize]="maxSize"
+                        [boundaryLinks]="true"
+                        [rotate]="false"
+                        (pageChanged)="onChangeTable(config, $event)"
+                        (numPages)="numPages = $event">
+            </pagination>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Homework" id="homework">
       <ng-template ngbTabContent>
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-2"></div>
@@ -38,38 +53,13 @@
         </div>
       </ng-template>
     </ngb-tab>
-    <ngb-tab title="Homework" id="homework">
-      <ng-template ngbTabContent>
-        <div class="row" style="margin-top: 10px;">
-          <div class="col-md-2"></div>
-          <div class="col-md-8">
-            <ng-table [config]="configHomework"
-                      (tableChanged)="onChangeTable(configHomework)"
-                      (cellClicked)="onCellClick($event)"
-                      [rows]="rows" [columns]="columns"></ng-table>
-            <pagination *ngIf="configHomework.paging"
-                        class="pagination-sm"
-                        [(ngModel)]="page"
-                        [totalItems]="length"
-                        [itemsPerPage]="itemsPerPage"
-                        [maxSize]="maxSize"
-                        [boundaryLinks]="true"
-                        [rotate]="false"
-                        (pageChanged)="onChangeTable(configHomework, $event)"
-                        (numPages)="numPages = $event">
-            </pagination>
-          </div>
-          <div class="col-md-2"></div>
-        </div>
-      </ng-template>
-    </ngb-tab>
     <ngb-tab title="Test" id="test">
       <ng-template ngbTabContent>
         <div class="row" style="margin-top: 10px;">
           <div class="col-md-2"></div>
           <div class="col-md-8">
-            <ng-table [config]="configTest"
-                      (tableChanged)="onChangeTable(configTest)"
+            <ng-table [config]="config"
+                      (tableChanged)="onChangeTable(config)"
                       (cellClicked)="onCellClick($event)"
                       [rows]="rows" [columns]="columns"></ng-table>
             <pagination *ngIf="config.paging"
@@ -80,7 +70,7 @@
                         [maxSize]="maxSize"
                         [boundaryLinks]="true"
                         [rotate]="false"
-                        (pageChanged)="onChangeTable(configTest, $event)"
+                        (pageChanged)="onChangeTable(config, $event)"
                         (numPages)="numPages = $event">
             </pagination>
           </div>
