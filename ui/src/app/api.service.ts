@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   public updateGrade(grade: number, studentId: string, currentTab: string, _id: string) {
-    return this.httpClient.put(`${this.apiUrl}/update`, {
+    return this.httpClient.post(`${this.apiUrl}/update`, {
       _id: _id,
       grade: grade,
       studentId: studentId,

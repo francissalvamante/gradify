@@ -84,10 +84,16 @@ export class StudentGradeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private apiService: ApiService, private modalService: NgbModal) {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.init();
+  }
 
+  ngOnInit() {}
+
+  private init() {
     this.apiService.getStudentGrade(this.id).subscribe((response: StudentGradeResponse) => {
       this.name = response.data.firstName + ' ' + response.data.lastName;
-      this.data = response.average;
+      this.currentTab = !this.currentTab ? 'average' : this.currentTab;
+      this.data = response[this.currentTab];
       this.average = response.average;
       this.homework = response.homework;
       this.test = response.test;
@@ -95,8 +101,6 @@ export class StudentGradeComponent implements OnInit {
       this.onChangeTable(this.config);
     });
   }
-
-  ngOnInit() {}
 
   public onTabChange($event: NgbTabChangeEvent) {
     if($event.nextId === 'average') {
@@ -116,6 +120,7 @@ export class StudentGradeComponent implements OnInit {
     }
 
     this.currentTab = $event.nextId;
+    this.init();
     this.onChangeTable(this.config);
   }
 
@@ -176,6 +181,7 @@ export class StudentGradeComponent implements OnInit {
     }
 
     let tempArray:Array<any> = [];
+    console.log('filtered', filteredData);
     filteredData.forEach((item:any) => {
       let flag = false;
       this.columns.forEach((column:any) => {
@@ -213,5 +219,16 @@ export class StudentGradeComponent implements OnInit {
     modalRef.componentInstance.studentId = data.row.studentId;
     modalRef.componentInstance.currentTab = this.currentTab;
     modalRef.componentInstance._id = data.row._id;
+
+    modalRef.result.then((response) => {
+      if(response === 'updated') {
+        this.onTabChange({
+          activeId: this.currentTab,
+          nextId: 'average',
+          preventDefault: () => {}
+        })
+        this.init();
+      }
+    })
   }
 }

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const AverageSchema = mongoose.Schema({
 	average: Number,
+	homeworkScore: Number,
+	testScore: Number,
 	quarter: String,
 	year: String,
 	studentId: {

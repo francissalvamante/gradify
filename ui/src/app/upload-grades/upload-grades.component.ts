@@ -17,7 +17,7 @@ export class UploadGradesComponent implements OnInit {
   uploadGrades() {
     let data = this.grades.split('\n');
     this.apiService.uploadGrades(data).subscribe(data => {
-      this.router.navigate(['grades']);
+      this.router.navigate(['students']);
     });
   }
 

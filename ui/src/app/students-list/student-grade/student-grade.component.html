@@ -3,7 +3,7 @@
     <p class="lead">{{name || 'Student'}} Grades</p>
   </div>
 
-  <ngb-tabset (tabChange)="onTabChange($event)">
+  <ngb-tabset [activeId]="currentTab" (tabChange)="onTabChange($event)">
     <ngb-tab title="Average" id="average">
       <ng-template ngbTabContent>
         <div class="row" style="margin-top: 10px;">

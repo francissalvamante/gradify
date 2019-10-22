@@ -36,7 +36,7 @@ export class StudentsListComponent implements OnInit {
     paging: true,
     sorting: {columns: this.columns},
     filtering: {filterString: ''},
-    className: ['table-striped', 'table-bordered']
+    className: ['table-hover', 'table-bordered']
   };
 
   private data:Array<any>;

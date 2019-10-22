@@ -8,9 +8,9 @@ import { StudentGradeComponent } from "./students-list/student-grade/student-gra
 
 
 const routes: Routes = [
-	{ path: '', component: HomeComponent },
-	{ path: 'upload', component: UploadGradesComponent },
-	{ path: 'students', component: StudentsListComponent },
+  { path: '', component: HomeComponent },
+  { path: 'upload', component: UploadGradesComponent },
+  { path: 'students', component: StudentsListComponent },
   { path: 'students/:id/grades', component: StudentGradeComponent },
   { path: 'profile', component: ProfileComponent }
 ];

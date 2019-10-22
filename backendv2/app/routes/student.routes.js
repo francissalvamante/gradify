@@ -7,5 +7,5 @@ module.exports = (app) => {
 
 	app.get('/studentgrade', students.studentGrade);
 
-	app.put('/update', students.updateGrade);
+	app.post('/update', students.updateGrade);
 }

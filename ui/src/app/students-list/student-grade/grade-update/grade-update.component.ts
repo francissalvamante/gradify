@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { ApiService } from "../../../api.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grade-update',
@@ -14,19 +15,20 @@ export class GradeUpdateComponent implements OnInit {
   @Input() _id: string;
   oldGrade: number;
 
-  constructor(public activeModal: NgbActiveModal, private apiService: ApiService) { }
+  constructor(public activeModal: NgbActiveModal, private apiService: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.oldGrade = this.grade;
   }
 
-  public updateGrade(): void {
+  public async updateGrade(): Promise<void> {
     if(this.currentTab === 'homework')
-      this.apiService.updateGrade(this.grade, this.studentId, this.currentTab, this._id).subscribe((response) => {
-        console.log('response', response)
+      await this.apiService.updateGrade(this.grade, this.studentId, this.currentTab, this._id).subscribe((response) => {
+        this.activeModal.close('updated');
       });
     else if(this.currentTab === 'test')
-      console.log('test');
-    this.activeModal.close('Close click');
+      await this.apiService.updateGrade(this.grade, this.studentId, this.currentTab, this._id).subscribe((response) => {
+        this.activeModal.close('updated');
+      });
   }
 }
