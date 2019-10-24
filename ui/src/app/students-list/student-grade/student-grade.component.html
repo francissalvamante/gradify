@@ -12,6 +12,15 @@
             <ng-table [config]="config"
                       (tableChanged)="onChangeTable(config)"
                       [rows]="rows" [columns]="columns"></ng-table>
+            <div *ngIf="rows.length === 0" style="
+              background-color: #f1f1f1;
+              padding: 10px;
+              text-align: center;
+              margin-top: -17px;
+              margin-bottom: 10px;
+            ">
+              <span>No data found</span>
+            </div>
             <pagination *ngIf="config.paging"
                         class="pagination-sm"
                         [(ngModel)]="page"
@@ -37,6 +46,13 @@
                       (tableChanged)="onChangeTable(config)"
                       (cellClicked)="onCellClick($event)"
                       [rows]="rows" [columns]="columns"></ng-table>
+            <div *ngIf="rows.length === 0" style="
+              background-color: #f1f1f1;
+              padding: 10px;
+              text-align: center;
+              margin-top: -17px;
+              margin-bottom: 10px;
+            ">
             <pagination *ngIf="config.paging"
                         class="pagination-sm"
                         [(ngModel)]="page"
@@ -62,6 +78,13 @@
                       (tableChanged)="onChangeTable(config)"
                       (cellClicked)="onCellClick($event)"
                       [rows]="rows" [columns]="columns"></ng-table>
+            <div *ngIf="rows.length === 0" style="
+              background-color: #f1f1f1;
+              padding: 10px;
+              text-align: center;
+              margin-top: -17px;
+              margin-bottom: 10px;
+            ">
             <pagination *ngIf="config.paging"
                         class="pagination-sm"
                         [(ngModel)]="page"
