@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2TableModule } from "ngx-datatable/ng2-table";
+import { ToastrModule } from "ngx-toastr";
+import { FileSelectDirective } from "ng2-file-upload";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +26,8 @@ import { GradeUpdateComponent } from './students-list/student-grade/grade-update
     HomeComponent,
     ProfileComponent,
     StudentGradeComponent,
-    GradeUpdateComponent
+    GradeUpdateComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { GradeUpdateComponent } from './students-list/student-grade/grade-update
     BrowserAnimationsModule,
     FormsModule,
     Ng2TableModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   entryComponents: [
     GradeUpdateComponent

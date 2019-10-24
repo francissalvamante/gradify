@@ -226,7 +226,7 @@ export class StudentGradeComponent implements OnInit {
           activeId: this.currentTab,
           nextId: 'average',
           preventDefault: () => {}
-        })
+        });
         this.init();
       }
     })

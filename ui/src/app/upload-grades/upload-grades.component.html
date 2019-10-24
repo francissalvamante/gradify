@@ -18,15 +18,17 @@
       <div>
         <p>- or -</p>
       </div>
-      <div>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text upload" id="btnUpload"></span>
-          </div>
-          <div class="custom-file">
-            <form></form>
-          </div>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01" style="height: 35px;">Upload</span>
         </div>
+        <div class="custom-file">
+          <input type="file" name="image" class="custom-file-input" id="inputGroupFill01" ng2FileSelect [uploader]="uploader" accept=".txt" aria-describedby="inputGroupFileAddon01" style="cursor: pointer;">
+          <label class="custom-file-label" for="inputGroupFill01">{{!uploader.getNotUploadedItems().length ? 'Choose a file' : uploader.getNotUploadedItems()[0].some.name }}</label>
+        </div>
+      </div>
+      <div style="margin-top: 10px;">
+        <button type="button" class="btn btn-dark" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" [ngStyle]="{'cursor': (uploader.getNotUploadedItems().length ? 'pointer' : 'not-allowed')}">Upload</button>
       </div>
     </div>
     <div class="col-md-2"></div>
