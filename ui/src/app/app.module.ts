@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2TableModule } from "ngx-datatable/ng2-table";
 import { ToastrModule } from "ngx-toastr";
 import { FileSelectDirective } from "ng2-file-upload";
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PaginationModule } from "ngx-bootstrap";
 import { StudentGradeComponent } from './students-list/student-grade/student-grade.component';
 import { GradeUpdateComponent } from './students-list/student-grade/grade-update/grade-update.component';
+import {CustomHttpInterceptor} from "./http-interceptor";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { GradeUpdateComponent } from './students-list/student-grade/grade-update
     ProfileComponent,
     StudentGradeComponent,
     GradeUpdateComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    MatProgressBar
   ],
   imports: [
     BrowserModule,
@@ -39,12 +42,16 @@ import { GradeUpdateComponent } from './students-list/student-grade/grade-update
     FormsModule,
     Ng2TableModule,
     PaginationModule.forRoot(),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   entryComponents: [
     GradeUpdateComponent
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: CustomHttpInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

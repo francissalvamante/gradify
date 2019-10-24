@@ -315,5 +315,6 @@
     </ul>
   </div>
 </nav>
+<mat-progress-bar mode="indeterminate" *ngIf="spinnerService.visibility | async"></mat-progress-bar>
 
 <router-outlet></router-outlet>

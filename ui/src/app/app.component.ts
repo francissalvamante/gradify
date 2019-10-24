@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
+import { SpinnerService } from "./spinner.service";
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   title = 'Grading System';
 
-  constructor() { console.log('envi', environment); }
+  constructor(private spinnerService: SpinnerService) { }
 }

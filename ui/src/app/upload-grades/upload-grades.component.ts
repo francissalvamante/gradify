@@ -26,9 +26,10 @@ export class UploadGradesComponent implements OnInit {
 
     this.uploader.onCompleteItem = (item: any, status: any) => {
       status = JSON.parse(status);
-      if(status.success)
+      if(status.success) {
         this.toastr.success('File successfully uploaded');
-      else
+        this.router.navigate(['students']);
+      } else
         this.toastr.error('File upload error');
     }
   }
