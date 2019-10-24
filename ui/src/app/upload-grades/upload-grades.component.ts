@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { FileUploader } from "ng2-file-upload";
 import { ToastrService } from "ngx-toastr";
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-upload-grades',
@@ -12,7 +13,7 @@ import { ToastrService } from "ngx-toastr";
 export class UploadGradesComponent implements OnInit {
   grades: String;
   public uploader: FileUploader = new FileUploader({
-    url: 'http://localhost:5000/upload',
+    url: `${environment.apiUrl}/upload`,
     itemAlias: 'image'
   });
 
