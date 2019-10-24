@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9273f6bf-ae38-4837-8039-adc39b0c1bbf" name="Default Changelist" comment="master - added interceptor for showing progress bar when there is an HTTP Request">
+    <list default="true" id="9273f6bf-ae38-4837-8039-adc39b0c1bbf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/app/upload-grades/upload-grades.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/app/upload-grades/upload-grades.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/app/students-list/students-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/app/students-list/students-list.component.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +80,7 @@
       <workItem from="1571712116912" duration="8003000" />
       <workItem from="1571726974831" duration="10571000" />
       <workItem from="1571885636901" duration="6730000" />
-      <workItem from="1571896351017" duration="9830000" />
+      <workItem from="1571896351017" duration="11680000" />
     </task>
     <task id="LOCAL-00001" summary="master - added textarea for inputting grades">
       <created>1571381626271</created>
@@ -159,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571903976124</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="master - added onProgressItem to show progressBar when uploading">
+      <created>1571908540774</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1571908540774</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +202,7 @@
     <MESSAGE value="master - finished uploading of grades" />
     <MESSAGE value="master - updates" />
     <MESSAGE value="master - added interceptor for showing progress bar when there is an HTTP Request" />
-    <option name="LAST_COMMIT_MESSAGE" value="master - added interceptor for showing progress bar when there is an HTTP Request" />
+    <MESSAGE value="master - added onProgressItem to show progressBar when uploading" />
+    <option name="LAST_COMMIT_MESSAGE" value="master - added onProgressItem to show progressBar when uploading" />
   </component>
 </project>
